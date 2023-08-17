@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modified Calculator</title>
+    <style>
+        *{
+            margin: 0px;
+            padding: 0px;
+            box-sizing: border-box;
+        }
+        body{
+            background-color:#90ddce;
+				min-height: 100vh;
+				align-items: center;	
+				display	:flex;
+				justify-content: center;
+                align-items: center;		
+        }
+        .div1{
+            border: 2px solid #444;
+            background: transparent;
+            background-color: #444;
+            border-radius: 20px;
+            padding: 20px;
+            
+        }
+        div input[type=text]
+        {
+          margin:8px 0;
+          padding:auto;
+          font-size: 20px;
+        }
+        div input[type=text]:read-only
+        {
+
+           /* color: #fff; */
+           text-align: center;
+           font-weight: bold;
+
+        }
+       div button{
+            margin: 10px 0px;
+            padding:10px;
+            width: 90px;
+            background-color:dimgray;
+            border-radius: 10px;
+            border: 3px solid black;
+            font-size: 20px;
+            text-align: center;
+            color: #fff;
+            
+        }
+
+        #display
+		{
+			       width: 100%;
+			       border-radius: 20px;
+			      padding: 10px;
+            border: 4px solid black;
+			       margin: auto;
+            /* justify-content: flex-end;
+            align-items: center; */
+            text-align: right;
+            background-color: gray;
+
+		}
+    </style>
+</head>
+<body>
+    <div class="div1">
+        <h2 style="color:#fff;text-align: center;color: orchid;">Simple Calculator using JavaScript</h2>
+    <!-- <input type="number" name="first" id="first" placeholder="Enter the first number"/>
+<br><br>
+    <input type="number"name="second" id="second" placeholder="Enter the second number"/> -->
+   <br>
+    <br>
+    <input type="text" name="" id="display" readonly=" "/>  
+    <br>
+    <br>
+    <button type="button" id="AC">AC</button>
+    <button type="button" id="DC">DC</button>
+    <button type="button" id="sub">-</button>
+    <button type="button" id="div">/</button>
+    <br>
+    <br>
+    <button type="button" class="7">7</button>
+    <button type="button" class="8">8</button>
+    <button type="button" class="9">9</button>
+     <button type="button" id="modu">%</button>
+    <br>
+    <br>
+    <button type="button" class="4">4</button>
+    <button type="button" class="5">5</button>
+    <button type="button" class="6">6</button>
+    <button type="button" id="add">+</button>
+    <br>
+    <br>
+    <button type="button" class="1">1</button>
+    <button type="button" class="2">2</button>
+    <button type="button" class="3">3</button>
+    <button type="button" id="mul">*</button>
+    <br><br>
+    <button type="button" id="dot">.</button>
+    <button type="button"  id="zero">0</button>
+    <button type="button" id="btn" style="width: 190px;">=</button>
+   <script>
+    var res=document.getElementById("display");
+    let btn = document.querySelectorAll('button');
+    let displayVal='';
+    btn.forEach(btn => {
+   btn.addEventListener('click',(event) => {
+    let btn_input = event.target.innerText;
+    if(btn_input=='AC'){
+      displayVal='';
+      res.value='';
+      alert(" If click AC All data has been deleted");
+    }
+    else if(btn_input=='DC')
+    {
+        res.value =res.value.slice(0, -1);
+        displayVal="";
+        
+    }
+    
+    else if(btn_input=='='){
+      try {
+        let result = eval(displayVal);
+        res.value=result;
+      } catch (error) {
+        alert('Invalid expression!');
+        displayVal='';
+        res.value='';
+      }
+    }
+    
+    else {
+     displayVal += btn_input;
+     res.value = displayVal;
+    }
+  });
+});
+
+document.getElementById('add').onclick=add;
+function add(){
+    alert("This is addition");
+}
+// (btn_input=='sub')
+// {
+// document.getElementById('sub').onclick=sub;
+// function sub(){
+//     alert("This is subtraction operation");
+// }
+// }
+// else if(btn_input=='mul')
+// {
+// document.getElementById('mul').onclick=mul;
+// function mul(){
+//     alert("This is multiply operation");
+// }
+// }
+// else if(btn_input=='div')
+// {
+// document.getElementById('div').onclick=div;
+// function div(){
+//     alert("This is division operation");
+// }
+// }
+// else if(btn_input=='modu')
+// {
+// document.getElementById('modu').onclick=modu;
+// function modu(){
+//     alert("This is this is modulation operation");
+// }
+// }
+    </script>
+</div>
+</body>
+</html>
